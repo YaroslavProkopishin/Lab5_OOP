@@ -211,8 +211,24 @@ namespace Lab5_Version3
             return result;
             }
 
+            public static Project operator -(Project p1, Project p2)
+            {
+                Project result = new Project();
 
-            public static bool operator ==(Project p1, Project p2)
+                result.Name = p1.Name;
+                result.Sphere = p1.Sphere;
+
+                result.Difficulty = p1.Difficulty - p2.Difficulty;
+                if (result.Difficulty < 1)
+                result.Difficulty = 1;
+
+                result.Status = "Вільний";
+
+                return result;
+            }
+
+
+        public static bool operator ==(Project p1, Project p2)
             {
             if (ReferenceEquals(p1, p2))
                 return true;

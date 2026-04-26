@@ -232,6 +232,35 @@ namespace Lab5_Version3
                 youth.Rating = 0;
             return youth;
         }
+        public static bool operator ==(Youth y1, Youth y2)
+        {
+            if (ReferenceEquals(y1, y2))
+                return true;
+
+            if (y1 is null || y2 is null)
+                return false;
+
+            return y1.Rating == y2.Rating;
+        }
+
+        public static bool operator !=(Youth y1, Youth y2)
+        {
+            return !(y1 == y2);
+        }
+
+
+        public override bool Equals(object obj)
+        {
+            if (obj is Youth other)
+                return this.Rating == other.Rating;
+
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return Rating.GetHashCode();
+        }
 
         public override string GetInfo()
         {
